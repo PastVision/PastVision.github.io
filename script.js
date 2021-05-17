@@ -7,7 +7,7 @@ image.addEventListener("load", function () {
   const ctx = canvas.getContext("2d");
   canvas.width = 500;
   canvas.height = 500;
-  //ctx.drawImage(image, 0, 0, canvas.width, canvas.width);
+  ctx.drawImage(image, 0, 0, canvas.width, canvas.width);
 
   let particlesArray = [];
   const particleCount = 5000;
