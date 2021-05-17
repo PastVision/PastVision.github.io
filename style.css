@@ -3,11 +3,11 @@ body {
 }
 
 #pixel {
-    border: 3px solid white;
+    /* border: 3px solid white; */
     top: 50%;
     left: 50%;
     position:absolute;
-    width: 500px;
-    height: 500px;
+    width: 1000px;
+    height: 750px;
     transform: translate(-50%, -50%);
 }
