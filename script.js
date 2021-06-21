@@ -4,7 +4,7 @@ image.addEventListener("load", function () {
   const canvas = document.getElementById("pixel");
   const ctx = canvas.getContext("2d");
   canvas.width = 1200;
-  canvas.height = 375;
+  canvas.height = 974;
   ctx.drawImage(image, 0, 0, canvas.width, canvas.width);
   const pixels = ctx.getImageData(0, 0, canvas.width, canvas.height);
   ctx.clearRect(0, 0, canvas.width, canvas.height);
