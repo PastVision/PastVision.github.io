@@ -39,7 +39,7 @@ image.addEventListener("load", function () {
       this.x = Math.random() * canvas.width;
       this.y = 0;
       this.speed = 0;
-      this.velocity = Math.random() * 1.5;
+      this.velocity = Math.random() * 3.5;
       this.size = Math.random() * 1.5 + 1;
       this.postion1 = Math.floor(this.y);
       this.postion2 = Math.floor(this.x);
