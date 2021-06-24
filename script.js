@@ -1,11 +1,11 @@
 const image = new Image();
-image.src = '/image.jpeg'
+image.src = '/image.png'
 image.addEventListener("load", function () {
   const canvas = document.getElementById("pixel");
   const ctx = canvas.getContext("2d");
   canvas.width = 1200;
-  canvas.height = 974;
-  ctx.drawImage(image, 0, 0, canvas.width, canvas.width);
+  canvas.height = 375;
+  ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
   const pixels = ctx.getImageData(0, 0, canvas.width, canvas.height);
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   let particlesArray = [];
@@ -27,20 +27,18 @@ image.addEventListener("load", function () {
 
   function getBrightness(red, green, blue) {
     return (
-      Math.sqrt(
-        red * red * 0.299 + blue * blue * 0.587 + green * green * 0.114
-      ) / 100
+      (red + green + blue) / (255 * 3)
     );
   }
-  const particleCount = 10000;
+  const particleCount = 5000;
 
   class Particle {
     constructor() {
       this.x = Math.random() * canvas.width;
       this.y = 0;
       this.speed = 0;
-      this.velocity = Math.random() * 3.5;
-      this.size = Math.random() * 1.5 + 1;
+      this.velocity = Math.random() * 1.5;
+      this.size = Math.random() * 1.75;
       this.postion1 = Math.floor(this.y);
       this.postion2 = Math.floor(this.x);
     }
@@ -48,8 +46,8 @@ image.addEventListener("load", function () {
     update() {
       this.postion1 = Math.floor(this.y);
       this.postion2 = Math.floor(this.x);
-      this.speed = mappedImage[this.postion1][this.postion2][0];
-      this.movement = (2.5 - this.speed) + this.velocity;
+      this.speed = Math.random() * mappedImage[this.postion1][this.postion2][0];
+      this.movement = (1.5 - this.speed) + this.velocity;
       this.y += this.movement;
       if (this.y > canvas.height) {
         this.y = 0;
@@ -59,8 +57,8 @@ image.addEventListener("load", function () {
 
     draw() {
       ctx.beginPath();
-      // ctx.fillStyle = "rgb(3, 160, 98)";
-      ctx.fillStyle = "white";
+      ctx.fillStyle = "rgb(3, 160, 98)";
+      // ctx.fillStyle = "white";
       ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
       ctx.fill();
     }
@@ -72,7 +70,7 @@ image.addEventListener("load", function () {
   }
   init();
   function animate() {
-    ctx.globalAlpha = 0.05;
+    ctx.globalAlpha = 0.01;
     ctx.fillStyle = "rgb(0, 0, 0)";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
     for (let i = 0; i < particleCount; i++) {
@@ -82,5 +80,5 @@ image.addEventListener("load", function () {
     }
     requestAnimationFrame(animate);
   }
-  animate();
+  requestAnimationFrame(animate);
 });
