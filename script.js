@@ -30,7 +30,7 @@ image.addEventListener("load", function () {
       (red + green + blue) / (255 * 3)
     );
   }
-  const particleCount = 5000;
+  const particleCount = 1000;
 
   class Particle {
     constructor() {
