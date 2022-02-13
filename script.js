@@ -1,10 +1,10 @@
 const image = new Image();
-image.src = '/pfp.jpg'
+image.src = '/image.png'
 image.addEventListener("load", function () {
   const canvas = document.getElementById("pixel");
   const ctx = canvas.getContext("2d");
-  canvas.width = 600;
-  canvas.height = 900;
+  canvas.width = 1200;
+  canvas.height = 375;
   ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
   const pixels = ctx.getImageData(0, 0, canvas.width, canvas.height);
   ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -19,9 +19,6 @@ image.addEventListener("load", function () {
       const brightness = getBrightness(red, green, blue);
       const cell = [
         cellBrightness = brightness,
-        r = red,
-        g = green,
-        b = blue,
       ];
       row.push(cell);
     }
@@ -29,16 +26,11 @@ image.addEventListener("load", function () {
   }
 
   function getBrightness(red, green, blue) {
-    // return (
-    //   (red + green + blue) / (255 * 3)
-    // );
     return (
-      Math.sqrt(
-        (red * red) * 0.299 + (green * green) * 0.587 + (blue * blue) * 0.114
-      ) / 100
+      (red + green + blue) / (255 * 3)
     );
   }
-  const particleCount = 5000;
+  const particleCount = 1000;
 
   class Particle {
     constructor() {
@@ -65,11 +57,7 @@ image.addEventListener("load", function () {
 
     draw() {
       ctx.beginPath();
-      r = mappedImage[this.postion1][this.postion2][1];
-      g = mappedImage[this.postion1][this.postion2][2];
-      b = mappedImage[this.postion1][this.postion2][3];
-      ctx.fillStyle = `rgb(${r}, ${g}, ${b})`;
-      // ctx.fillStyle = "rgb(0, 255, 0)";
+      ctx.fillStyle = "rgb(0, 255, 0)";
       // ctx.fillStyle = "white";
       ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
       ctx.fill();
@@ -82,7 +70,7 @@ image.addEventListener("load", function () {
   }
   init();
   function animate() {
-    ctx.globalAlpha = 0.05;
+    ctx.globalAlpha = 0.01;
     ctx.fillStyle = "rgb(0, 0, 0)";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
     for (let i = 0; i < particleCount; i++) {
