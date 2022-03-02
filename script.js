@@ -1,5 +1,5 @@
 const image = new Image();
-image.src = '/image.png'
+image.src = '/image_1.png'
 image.addEventListener("load", function () {
   const canvas = document.getElementById("pixel");
   const ctx = canvas.getContext("2d");
