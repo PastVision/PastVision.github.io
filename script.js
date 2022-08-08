@@ -57,7 +57,7 @@ image.addEventListener("load", function () {
 
     draw() {
       ctx.beginPath();
-      ctx.fillStyle = "rgb(255, 0, 0)";
+      ctx.fillStyle = "rgb(0, 255, 0)";
       // ctx.fillStyle = "white";
       ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
       ctx.fill();
