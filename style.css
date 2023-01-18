@@ -6,7 +6,8 @@ body {
 }
 
 #textholder {
-    color: "#ffffff"
+    color: white;
+    font-family: Arial, sans-serif;
 }
 
 #pixel {
